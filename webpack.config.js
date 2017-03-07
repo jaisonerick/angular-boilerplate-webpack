@@ -95,7 +95,7 @@ module.exports = function makeWebpackConfig() {
       //
       // Reference: https://github.com/postcss/postcss-loader
       // Postprocess your css with PostCSS plugins
-      test: /\.css$/,
+      test: /\.s?css$/,
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files in production builds
       //
@@ -106,7 +106,8 @@ module.exports = function makeWebpackConfig() {
         fallbackLoader: 'style-loader',
         loader: [
           {loader: 'css-loader', query: {sourceMap: true}},
-          {loader: 'postcss-loader'}
+          {loader: 'postcss-loader'},
+          {loader: 'sass-loader' }
         ],
       })
     }, {
@@ -126,7 +127,6 @@ module.exports = function makeWebpackConfig() {
       loader: 'raw-loader'
     }]
   };
-
   // ISTANBUL LOADER
   // https://github.com/deepsweet/istanbul-instrumenter-loader
   // Instrument JS files with istanbul-lib-instrument for subsequent code coverage reporting
